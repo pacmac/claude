@@ -56,6 +56,23 @@ When you tell Claude something isn't working and it pushes back with "it should 
 
 ---
 
+### `/idi` — Investigate, Document, Implement
+
+A strict three-phase workflow that prevents Claude from jumping straight to code. Each phase produces a deliverable and pauses for your approval before moving on.
+
+1. **Investigate** — read the code, trace the logic, find the root cause. No files modified. Report findings.
+2. **Document** — write a concrete, step-by-step implementation plan. No vague descriptions.
+3. **Implement** — execute exactly the plan from Phase 2, nothing more.
+
+**Usage:**
+```
+/idi <description of the bug or feature>
+```
+
+**Why this exists:** Claude's default instinct is to start coding immediately. This forces it to understand first, plan second, and only then write code — with your sign-off at each stage.
+
+---
+
 ### `/hallucinate` — Stop Seeing What Isn't There
 
 Tells Claude to stop hallucinating — describing what it *expects* to see instead of what's *actually* there. When Claude misreads a screenshot, quotes code that doesn't exist, or describes a file from memory instead of reading it, use this to snap it back to reality.
