@@ -9,7 +9,7 @@ A collection of custom skills for [Claude Code](https://claude.com/claude-code) 
 | `/idi` | Three-phase workflow: Investigate, Document, Implement |
 | `/investigate` | Read-only bug investigation — no file modifications allowed |
 | `/no-argue` | Accept the user's report as fact, then investigate |
-| `/no-guessing` | Two attempts max, then stop and plan |
+| `/no-guessing` | Two attempts max, then switch to `/idi` |
 | `/session-id` | Name sessions for easy resuming (includes `cr` script) |
 | `/undo` | Revert Claude's most recent file changes |
 
@@ -116,7 +116,7 @@ A disciplined, hands-off investigation mode. Claude reads code, traces logic, ch
 
 ### `/no-guessing` — Two Strikes and You Plan
 
-Activates a strict 2-attempt limit on fixing any problem. If both attempts fail, Claude must **stop**, switch to read-only investigation, and present a diagnostic report for your approval before trying again.
+Activates a strict 2-attempt limit on fixing any problem. If both attempts fail, Claude must **stop** and switch to the `/idi` workflow (Investigate, Document, Implement) — with user approval required at each phase.
 
 **Usage:**
 ```
@@ -128,7 +128,7 @@ This activates the protocol for the remainder of the current task. It prevents g
 **Rules:**
 - Attempt 1: Best fix based on current understanding
 - Attempt 2: Must explain what went wrong first, then try once more
-- After 2 failures: Full stop. Read-only investigation. Diagnostic report. Wait for approval.
+- After 2 failures: Full stop. Switch to `/idi` — Investigate, Document, Implement.
 
 ---
 

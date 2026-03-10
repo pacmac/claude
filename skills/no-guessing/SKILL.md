@@ -1,11 +1,11 @@
 ---
 name: no-guessing
-description: "Two strikes and you plan. Activates strict 2-attempt limit — if both fail, STOP, investigate read-only, and present findings for user approval before trying again."
+description: "Two strikes and you /idi. Activates strict 2-attempt limit — if both fail, STOP and switch to /idi (Investigate, Document, Implement) workflow."
 ---
 
-# /no-guessing — Two strikes and you plan
+# /no-guessing — Two strikes and you /idi
 
-If the argument is `help`, respond with: "**/no-guessing** — Activates the no-guessing protocol for the current task. You get 2 attempts to fix a problem. If both fail, STOP and investigate properly before trying again." and STOP.
+If the argument is `help`, respond with: "**/no-guessing** — Activates the no-guessing protocol for the current task. You get 2 attempts to fix a problem. If both fail, STOP and switch to `/idi` (Investigate, Document, Implement)." and STOP.
 
 ## Purpose
 
@@ -26,37 +26,16 @@ When this skill is invoked, the following rules are ACTIVATED for the remainder 
 - **Attempt 2**: If attempt 1 failed, you get ONE more try. But first, explain what went wrong and why your next attempt will be different.
 - **After attempt 2 fails**: STOP IMMEDIATELY. Do not touch any more code.
 
-### Rule 3: After 2 Failed Attempts — Investigate
+### Rule 3: After 2 Failed Attempts — Switch to /idi
 
 When both attempts fail:
 
 1. **STOP all code changes** — no more edits, no more "quick fixes"
-2. **Switch to /investigate mode** — read-only investigation
-   - Read the relevant source files
-   - Trace the code path from trigger to symptom
-   - Check the browser (DOM, console, network, computed styles)
-   - Understand the FULL picture before proposing anything
-3. **Present a diagnostic report** to the user:
-
-```
-## Diagnostic Report
-
-### What I tried
-- Attempt 1: <what you did and why it failed>
-- Attempt 2: <what you did and why it failed>
-
-### What I now understand
-<root cause analysis from investigation>
-
-### Proposed fix
-<specific changes, file paths, line numbers>
-
-### Why this will work
-<clear reasoning chain — not "this might work">
-```
-
-4. **WAIT for user approval** before implementing the proposed fix
-5. The user decides: approve the fix, suggest a different approach, or take over
+2. **Switch to `/idi` workflow** (Investigate, Document, Implement):
+   - **Phase 1 — Investigate**: Read-only. Read the source, trace the logic, find the root cause. Report findings and wait for approval.
+   - **Phase 2 — Document**: Write a concrete implementation plan. Wait for approval.
+   - **Phase 3 — Implement**: Execute exactly the plan, nothing more.
+3. Each phase requires user approval before proceeding to the next
 
 ### Rule 4: No Weaseling
 
@@ -75,6 +54,6 @@ When both attempts fail:
 
 This protocol is now **ACTIVE**. Acknowledge with:
 
-> No-guessing protocol activated. I get 2 attempts per problem. If both fail, I stop and investigate before proposing a fix for your approval.
+> No-guessing protocol activated. I get 2 attempts per problem. If both fail, I stop and switch to /idi (Investigate, Document, Implement).
 
 Then continue with whatever task is in progress.
