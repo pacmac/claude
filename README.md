@@ -4,15 +4,13 @@ A collection of custom skills for [Claude Code](https://claude.com/claude-code) 
 
 ---
 
-## Setup
-
-Skills are loaded by Claude Code from your project's `CLAUDE.md` or global settings. Point Claude Code at the `skills/` directory to make them available as slash commands.
-
-The `/session-id` skill includes a companion `cr` script. Add it to your PATH so you can resume named sessions from the terminal:
+## Quick Install
 
 ```bash
-ln -s /path/to/this/repo/cr /usr/local/bin/cr
+curl -fsSL https://raw.githubusercontent.com/pacmac/claude/master/install.sh | bash
 ```
+
+This installs all skills to `~/.claude/skills/` and the `cr` script to `~/.local/bin/`.
 
 ---
 
