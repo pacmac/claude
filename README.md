@@ -32,6 +32,21 @@ Outputs text in a plain, unformatted code block — no syntax highlighting, no m
 
 ---
 
+### `/hallucinate` — Stop Seeing What Isn't There
+
+Tells Claude to stop hallucinating — describing what it *expects* to see instead of what's *actually* there. When Claude misreads a screenshot, quotes code that doesn't exist, or describes a file from memory instead of reading it, use this to snap it back to reality.
+
+**Usage:**
+```
+/hallucinate
+```
+
+Once activated, Claude must re-read every source it references, quote code literally instead of paraphrasing, and never describe something it hasn't just viewed in the current turn. Stays in effect for the rest of the session.
+
+**Why this exists:** Claude frequently "sees" what it expects — reporting that code looks correct when it doesn't, describing UI elements that aren't there, or confirming a fix worked without actually checking. This skill forces it to stop and look again.
+
+---
+
 ### `/investigate` — Read-Only Bug Investigation
 
 A disciplined, hands-off investigation mode. Claude reads code, traces logic, checks the browser, and reports findings — but **never modifies any files**. Think of it as a detective, not a surgeon.
