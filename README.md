@@ -32,6 +32,19 @@ Outputs text in a plain, unformatted code block — no syntax highlighting, no m
 
 ---
 
+### `/no-argue` — Accept It and Investigate
+
+When you tell Claude something isn't working and it pushes back with "it should work" or "it looks correct to me" — use this. It forces Claude to accept your statement as fact, activate `/hallucinate` rules (re-read everything, no describing from memory), and switch to `/investigate` mode (read-only, find the root cause, report before fixing).
+
+**Usage:**
+```
+/no-argue
+```
+
+**Why this exists:** Claude has a habit of defending its own code instead of looking at what actually went wrong. This skill short-circuits the argument and redirects it to productive investigation.
+
+---
+
 ### `/hallucinate` — Stop Seeing What Isn't There
 
 Tells Claude to stop hallucinating — describing what it *expects* to see instead of what's *actually* there. When Claude misreads a screenshot, quotes code that doesn't exist, or describes a file from memory instead of reading it, use this to snap it back to reality.
