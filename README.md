@@ -1,26 +1,18 @@
 # Claude Code Toolkit
 
-A collection of custom skills and scripts for [Claude Code](https://claude.com/claude-code) — Anthropic's CLI for Claude. These extend Claude Code with opinionated workflows for safer, more disciplined AI-assisted development.
+A collection of custom skills for [Claude Code](https://claude.com/claude-code) — Anthropic's CLI for Claude. These extend Claude Code with opinionated workflows for safer, more disciplined AI-assisted development.
 
 ---
 
 ## Setup
 
-### Scripts
+Skills are loaded by Claude Code from your project's `CLAUDE.md` or global settings. Point Claude Code at the `skills/` directory to make them available as slash commands.
 
-Add the scripts to your system PATH so they can be called from anywhere:
+The `/session-id` skill includes a companion `cr` script. Add it to your PATH so you can resume named sessions from the terminal:
 
 ```bash
-# Symlink or add to PATH
 ln -s /path/to/this/repo/cr /usr/local/bin/cr
-
-# Or add the repo to your PATH
-export PATH="/path/to/this/repo:$PATH"
 ```
-
-### Skills
-
-Skills are loaded by Claude Code from your project's `CLAUDE.md` or global settings. Point Claude Code at the `skills/` directory to make them available as slash commands.
 
 ---
 
@@ -77,13 +69,25 @@ This activates the protocol for the remainder of the current task. It prevents g
 
 ### `/session-id` — Name Your Sessions
 
-Assign a human-readable name to the current Claude Code session so you can resume it later using the `cr` script.
+Assign a human-readable name to the current Claude Code session so you can resume it later. This skill includes the `cr` script, which handles all the session-naming logic and also lets you list and resume named sessions from the terminal.
 
-**Usage:**
+**Inside Claude Code:**
 ```
 /session-id myfeature       # Name the current session "myfeature"
 /session-id                  # Show the current session's name and UUID
 ```
+
+**From the terminal (via `cr`):**
+```bash
+cr                           # List all named sessions
+cr <name>                    # Resume a session by name
+cr <name> -f                 # Fork from a named session
+cr -s <name>                 # Save/name the current session
+cr -s <name> /path/to/proj   # Save with explicit project path
+cr -w                        # Show current session UUID and name
+```
+
+Session names are stored in `~/.claude/session-names.json`. Requires Python 3.
 
 ---
 
@@ -98,28 +102,6 @@ Undo Claude's most recent file changes using its memory of what it modified — 
 /undo                        # Undo the most recent batch of changes
 /undo <specific change>      # Undo only a specific change
 ```
-
----
-
-## Scripts
-
-### `cr` — Session Naming and Resuming
-
-A bash script for naming, listing, and resuming Claude Code sessions by human-readable names instead of UUIDs.
-
-**Usage:**
-```bash
-cr                           # List all named sessions
-cr <name>                    # Resume a session by name
-cr <name> -f                 # Fork from a named session
-cr -s <name>                 # Save/name the current session
-cr -s <name> /path/to/proj   # Save with explicit project path
-cr -w                        # Show current session UUID and name
-```
-
-**Requirements:** Python 3 (uses it internally for JSON handling)
-
-Session names are stored in `~/.claude/session-names.json`.
 
 ---
 
