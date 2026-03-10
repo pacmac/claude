@@ -2,6 +2,17 @@
 
 A collection of custom skills for [Claude Code](https://claude.com/claude-code) — Anthropic's CLI for Claude. These extend Claude Code with opinionated workflows for safer, more disciplined AI-assisted development.
 
+| Skill | What it does |
+|-------|-------------|
+| `/codebox` | Output text in a plain code block, ready to copy and paste |
+| `/hallucinate` | Stop Claude seeing what it expects instead of what's actually there |
+| `/idi` | Three-phase workflow: Investigate, Document, Implement |
+| `/investigate` | Read-only bug investigation — no file modifications allowed |
+| `/no-argue` | Accept the user's report as fact, then investigate |
+| `/no-guessing` | Two attempts max, then stop and plan |
+| `/session-id` | Name sessions for easy resuming (includes `cr` script) |
+| `/undo` | Revert Claude's most recent file changes |
+
 ---
 
 ## Quick Install
