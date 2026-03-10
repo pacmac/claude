@@ -14,6 +14,17 @@ This installs all skills to `~/.claude/skills/` and the `cr` script to `~/.local
 
 ---
 
+## Philosophy
+
+These tools enforce a few key principles:
+
+- **Understand before changing** — read the code, trace the logic, identify the root cause before touching anything
+- **Limit guessing** — two attempts max, then stop and think properly
+- **Human stays in control** — investigate and report, don't silently fix
+- **Keep it simple** — small, focused tools that do one thing well
+
+---
+
 ## Skills
 
 ### `/codebox` — Clean Copy-Paste Output
@@ -128,17 +139,6 @@ Undo Claude's most recent file changes using its memory of what it modified — 
 /undo                        # Undo the most recent batch of changes
 /undo <specific change>      # Undo only a specific change
 ```
-
----
-
-## Philosophy
-
-These tools enforce a few key principles:
-
-- **Understand before changing** — read the code, trace the logic, identify the root cause before touching anything
-- **Limit guessing** — two attempts max, then stop and think properly
-- **Human stays in control** — investigate and report, don't silently fix
-- **Keep it simple** — small, focused tools that do one thing well
 
 ---
 
